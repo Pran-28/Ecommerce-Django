@@ -77,8 +77,14 @@ WSGI_APPLICATION = 'djangoEcommerce.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'mssql',
+        'NAME': 'django_ecommerce',
+        'USER':'',
+        'PASSWORD':'',
+        'HOST':'localhost',
+        'OPTIONS':{
+            'driver':'ODBC Driver 17 for SQL Server'
+        }
     }
 }
 
@@ -122,6 +128,12 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
+
+
+MEDIA_URL = '/images/'
+
+MEDIA_ROOT = os.path.join(BASE_DIR,'static/images')
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field

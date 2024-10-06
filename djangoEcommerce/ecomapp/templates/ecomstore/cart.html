@@ -32,12 +32,12 @@
                 <div style="flex:2"><img class="row-image" src="{% static 'images/placeholder.png' %}"></div>
                 <div style="flex:2"><strong>Product 1</strong></div>
                 <div style="flex:1"><strong>250</strong></div>
-                <div style="flex:1"><strong>Quantity</strong>
+                <div style="flex:1"><strong>1</strong>
                     <p class="quantity">{{item.quantity}}</p>
                     <div class="quantity">
-                        <img data-product="{{item.product.id}}" data-action="add" class="chg-quantity update-cart" src="{% static  'images/arrow-up.png' %}">
+                        <img data-product="{{item.product.id}}" data-action="add" class="chg-quantity update-cart" src="{% static  'images/add.jpg' %}">
                 
-                        <img data-product="{{item.product.id}}" data-action="remove" class="chg-quantity update-cart" src="{% static  'images/arrow-down.png' %}">
+                        <img data-product="{{item.product.id}}" data-action="remove" class="chg-quantity update-cart" src="{% static  'images/minus.png' %}">
                     </div>
                 </div>
                 <div style="flex:1"><strong>450</strong></div> 

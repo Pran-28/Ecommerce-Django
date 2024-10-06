@@ -1,10 +1,12 @@
 from django.shortcuts import render
-
+from .models import *
 # Create your views here.
 
 
 def store(request):
-    context = {}
+    products = Product.objects.all()
+    print('products===>', products)
+    context = {'products':products}
     return render(request, "ecomstore/store.html", context)
 
 
