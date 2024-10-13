@@ -20,6 +20,9 @@
   </head>
 
   <body>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container-fluid">
         <a class="navbar-brand" href="{% url 'store' %}">Ecom</a>
@@ -49,6 +52,8 @@
           <div class="form-inline my-2 my-lg-0 d-flex">
             <button class="btn btn-warning me-2" type="submit">Search</button>
 
+            <button class="btn btn-danger me-2" type="button" onclick="logoutAlert()">Logout</button>
+
             <a href="{% url 'cart' %}">
                 <img id="cart-icon" src="{% static 'images/cart.png' %}">
             </a>
@@ -56,7 +61,11 @@
             <p id="cart-total">0</p>
 
         </div>
+
+      
       </div>
+  
+
     </nav>
 
     <div class="container">{% block content %} {% endblock content %}</div>
@@ -66,5 +75,17 @@
       integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
       crossorigin="anonymous"
     ></script>
+
+
+
+    <script>
+      function logoutAlert(){
+        localStorage.clear();
+        window.location.href = "http://127.0.0.1:8000/ecomapp/logout/"
+      }
+    </script>
+
+
+
   </body>
 </html>

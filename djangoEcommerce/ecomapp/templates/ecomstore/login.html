@@ -1,0 +1,70 @@
+{% extends 'ecomstore/main.html' %} {% load static %} {% block content %}
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+    <form method="POST">
+        <br/>
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Username</label>
+          <input type="name" name="username" class="form-control" id="username" aria-describedby="emailHelp">
+        </div>
+        <br/>
+        <br/>
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Email</label>
+          <input type="email" name="email" class="form-control" id="email">
+        </div>
+        <br/>
+        <br/><button type="button" class="btn btn-primary" onclick="login()">Submit</button>
+      </form>
+
+
+
+      <script>
+
+        function login(){
+            console.log("********Login**********")
+
+            var username = $('#username').val();
+            console.log("username===>", username)
+
+            var email = $("#email").val();
+            console.log("email===>", email)
+
+
+            payload = JSON.stringify({
+                "username" : username,
+                "email" : email
+            })
+
+            $.ajax({
+                url: "http://127.0.0.1:8000/ecomapp/login/",
+                type: "POST",
+                data:{
+                  'payload': payload,
+                  'csrfmiddlewaretoken': '{{ csrf_token }}'
+                },
+
+                success:function(data){
+                    
+                    console.log('data---->', data);
+
+                    var status = data.status
+                    console.log('status====>', status)
+
+                    if(status == true){
+                        window.location.href="{{baseUrl}}store";
+                    }else{
+                        window.location.href="{{baseUrl}}loginRender"
+                    }
+                },
+
+                complete:function(){},        
+            })
+        }
+    
+    </script>
+
+
+
+    {% endblock content %}
